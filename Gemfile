@@ -1,77 +1,78 @@
-# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-# rails
-gem 'rails', '~> 5.0.0'
 
-#db
+gem 'rails', '~> 5.1.0'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
-gem 'pg'
-gem 'postgres_ext', '~> 3.0.0'
+gem 'puma', '~> 3.7'
+gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 
-gem 'parser', '2.3.1.0'
+gem 'rack-cors'
+gem 'responders'
 
-gem 'aasm', '~> 4.10'
+gem 'jquery-rails'
+gem 'turbolinks'
+
+gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
 gem 'bcrypt', '~> 3.1.11'
-gem 'cancancan', '~> 1.14.0'
-gem 'paranoia', branch: 'rails5'
-
-# Use Puma as the app server
-gem 'puma', '~> 3.6.0'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-gem 'jsonapi-resources', '~> 0.7.1.beta2'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
 
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'jbuilder', '~> 2.5'
+gem 'redis', '~> 3.3.3'
+gem 'rqrcode'
+gem 'rotp'
 
-gem 'acts_as_list'
-gem 'ruby-pinyin', '~> 0.5.0'
-gem 'mini_magick', '~> 4.5.1'
-gem 'has_scope', '~> 0.7.0'
-gem 'paper_trail', '~> 5.2.0'
-gem 'json-schema', '~> 2.6.2'
+gem 'annotate'
+
+gem 'active_type', '>= 0.6.1'
+gem 'httparty', '~> 0.14.0'
+gem 'aasm'
+gem 'paper_trail', '~> 6.0.1'
 gem 'kaminari', '~> 0.17.0'
-gem 'letter_avatar'
+gem 'cancancan', '~> 1.16'
+gem 'rails_param', github: 'zhulux/rails_param'
+gem 'chinese_pinyin', '>= 1.0.1'
 
-gem 'redis', '~> 3.3.0'
-gem 'redis-rails', '~> 5.0.1'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-google'
+gem 'google-api-client', '~> 0.11.1'
+gem 'mime-types'
+gem 'gon', '~> 6.1'
+gem 'client_side_validations', '~> 9.1.0'
+gem 'simple_form', github: 'Stellenticket/simple_form', branch: 'rails5.1'
+gem 'simple_form_fancy_uploads'
+gem 'active_link_to'
 
-gem 'redis-namespace' # removed from sidekiq dependence, we still need it
-gem 'wisper', '~> 2.0.0.rc1'
-gem 'wisper-sidekiq'
-gem 'sidekiq', branch: 'rails5'
-gem 'sidetiq'
+gem 'recaptcha', require: 'recaptcha/rails'
+gem 'ransack', '~> 1.8.2'
+gem 'geoip'
 
-gem 'carrierwave', '~> 0.11'
-gem 'carrierwave-qiniu', '0.2.0' # 暂勿升级
+gem 'font-awesome-rails'
 
-# pdf
-gem 'prawn'
-gem 'combine_pdf'
-gem 'pdf-reader'
+gem 'chart-js-rails'
 
-## notice channel
-gem 'jpush', '~> 4.0.2'
-gem 'private_pub' # faye
-gem 'cloopen', :git => 'git://github.com/xiewenwei/cloopen.git' # sms
-gem 'wechat'
 
-gem 'httparty'
-gem 'unscoped_associations' # support unscoped for association
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_girl'
+  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'ffaker'
 
-gem 'byebug'
-gem 'listen'
+  gem 'brakeman', '~> 3.5.0', require: false # Rails static analysis security scanner
+  gem 'bullet' # n+1 query limit
+  gem 'rubocop', require: false # Code Style scanner
+end
+
+group :development do
+  gem 'pry'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+end
