@@ -1,4 +1,4 @@
-FROM watsy0007/rubyarn:0.0.8
+FROM watsy0007/rubyarn:0.0.9
 
 
 RUN mkdir -p /tmp/bundler
