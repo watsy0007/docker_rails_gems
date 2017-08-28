@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.4.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -25,10 +27,17 @@ gem 'bcrypt', '~> 3.1.11'
 
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.3.3'
+gem 'redis-namespace'
 gem 'rqrcode'
 gem 'rotp'
-
+gem 'ezcrypto'
 gem 'annotate'
+gem 'newrelic_rpm'
+gem 'bullet'
+
+gem 'ds_hash'
+
+gem 'bunny', '~> 2.7.0'
 
 gem 'active_type', '>= 0.6.1'
 gem 'httparty', '~> 0.14.0'
@@ -57,6 +66,10 @@ gem 'font-awesome-rails'
 
 gem 'chart-js-rails'
 
+gem 'sidekiq', '~> 5.0.4'
+gem 'sidetiq'
+
+gem 'wombat'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
